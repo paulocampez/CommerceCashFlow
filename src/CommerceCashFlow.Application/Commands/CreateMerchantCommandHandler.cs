@@ -1,3 +1,6 @@
+using CommerceCashFlow.Application.Commands;
+using CommerceCashFlow.Core.Entities;
+using CommerceCashFlow.Core.Repositories;
 using MediatR;
 
 namespace CommerceCashFlow.Application.CommandHandlers;
@@ -14,12 +17,10 @@ public class CreateMerchantHandler : IRequestHandler<CreateMerchantCommand, int>
     {
         var merchant = new Merchant
         {
-            Name = request.Name,
-            Address = request.Address,
-            // Set other properties
+            Name = request.Name
         };
 
-        await _merchantRepository.AddMerchantAsync(merchant);
+        await _merchantRepository.AddMerchant(merchant);
 
         return merchant.Id;
     }

@@ -8,47 +8,43 @@ namespace CommerceCashFlow.Infrastructure.Data.Repositories;
 
     public class MerchantRepository : IMerchantRepository
     {
-        private readonly ApplicationDbContext _dbContext;
+            private readonly CommerceCashFlowContext _context;
 
-        public MerchantRepository(ApplicationDbContext dbContext)
+        public MerchantRepository(CommerceCashFlowContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
-        public IEnumerable<Merchant> GetAllMerchants()
+        public async Task<Merchant> GetMerchantById(Guid id)
         {
-            return _dbContext.Merchants.ToList();
+            return await _context.Merchants.FindAsync(id);
         }
 
-        public Merchant GetMerchantById(int id)
+        public async Task<IEnumerable<Merchant>> GetAllMerchants()
         {
-            return _dbContext.Merchants.FirstOrDefault(m => m.Id == id);
+            return await Task.FromResult(_context.Merchants.ToList());
         }
 
-        public Merchant CreateMerchant(Merchant merchant)
+        public async Task AddMerchant(Merchant merchant)
         {
-            _dbContext.Merchants.Add(merchant);
-            _dbContext.SaveChanges();
-            return merchant;
+            await _context.Merchants.AddAsync(merchant);
+            await _context.SaveChangesAsync();
         }
 
-        public Merchant UpdateMerchant(Merchant merchant)
+        public async Task UpdateMerchant(Merchant merchant)
         {
-            _dbContext.Entry(merchant).State = EntityState.Modified;
-            _dbContext.SaveChanges();
-            return merchant;
+            _context.Merchants.Update(merchant);
+            await _context.SaveChangesAsync();
         }
 
-        public bool DeleteMerchant(int id)
+        public async Task DeleteMerchant(Guid id)
         {
-            var merchant = _dbContext.Merchants.FirstOrDefault(m => m.Id == id);
+            var merchant = await GetMerchantById(id);
             if (merchant != null)
             {
-                _dbContext.Merchants.Remove(merchant);
-                _dbContext.SaveChanges();
-                return true;
+                _context.Merchants.Remove(merchant);
+                await _context.SaveChangesAsync();
             }
-            return false;
         }
     }
 

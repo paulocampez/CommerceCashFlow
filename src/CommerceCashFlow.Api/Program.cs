@@ -1,10 +1,15 @@
 using CommerceCashFlow.Application.Commands;
 using CommerceCashFlow.Application.Queries;
+using CommerceCashFlow.Core.Repositories;
+using CommerceCashFlow.Core.Services;
 using CommerceCashFlow.Infrastructure;
+using CommerceCashFlow.Infrastructure.Data;
+using CommerceCashFlow.Infrastructure.Data.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +18,15 @@ builder.Services.AddDbContext<CommerceCashFlowContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
-
-// Register MediatR and handlers
-builder.Services.AddMediatR(typeof(CreateMerchantCommand).Assembly);
-builder.Services.AddMediatR(typeof(GetMerchantQuery).Assembly);
+var services = builder.Services;
+services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
+});
 
 // Register repositories and services
- builder.Services.AddScoped<IMerchantRepository, MerchantRepository>();
- builder.Services.AddScoped<IMerchantService, MerchantService>();
+ services.AddScoped<IMerchantRepository, MerchantRepository>();
+ services.AddScoped<IMerchantService, MerchantService>();
 
 var app = builder.Build();
 
@@ -41,4 +47,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();

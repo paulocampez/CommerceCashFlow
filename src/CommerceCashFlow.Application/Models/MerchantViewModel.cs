@@ -1,5 +1,5 @@
      namespace CommerceCashFlow.Application.Models;
-     public class MerchantDto
+     public class MerchantViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -10,7 +10,7 @@ using MediatR;
 
 namespace CommerceCashFlow.Application.Queries
 {
-    public class GetMerchantQueryHandler : IRequestHandler<GetMerchantQuery, List<MerchantDto>>
+    public class GetMerchantQueryHandler : IRequestHandler<GetMerchantQuery, MerchantViewModel>
     {
         private readonly IMerchantRepository _merchantRepository;
         private readonly IMapper _mapper;
@@ -21,11 +21,11 @@ namespace CommerceCashFlow.Application.Queries
             _mapper = mapper;
         }
 
-        public async Task<List<MerchantDto>> Handle(GetMerchantQuery request, CancellationToken cancellationToken)
+        public async Task<MerchantViewModel> Handle(GetMerchantQuery request, CancellationToken cancellationToken)
         {
-            var merchants = await _merchantRepository.GetMerchantsAsync();
-            var merchantDtos = _mapper.Map<List<MerchantDto>>(merchants);
-            return merchantDtos;
+            var merchants = await _merchantRepository.GetMerchantById(request.MerchantId);
+            var merchantViewModel  = _mapper.Map<MerchantViewModel>(merchants);
+            return merchantViewModel;
         }
         
     }

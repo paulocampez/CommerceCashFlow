@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommerceCashFlow.Application\CommerceCashFlow.Application.csproj" />
+    <ProjectReference Include="..\CommerceCashFlow.Infrastructure\CommerceCashFlow.Infrastructure.csproj" />
+    <ProjectReference Include="..\CommerceCashFlow.Core\CommerceCashFlow.Core.csproj" />
   </ItemGroup>
 
 </Project>

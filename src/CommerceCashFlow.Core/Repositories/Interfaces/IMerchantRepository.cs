@@ -5,9 +5,9 @@ namespace CommerceCashFlow.Core.Repositories;
 
     public interface IMerchantRepository
     {
-        IEnumerable<Merchant> GetAllMerchants();
-        Merchant GetMerchantById(int id);
-        Merchant CreateMerchant(Merchant merchant);
-        Merchant UpdateMerchant(Merchant merchant);
-        bool DeleteMerchant(int id);
+      Task<Merchant> GetMerchantById(Guid id);
+        Task<IEnumerable<Merchant>> GetAllMerchants();
+        Task AddMerchant(Merchant merchant);
+        Task UpdateMerchant(Merchant merchant);
+        Task DeleteMerchant(Guid id);
     }

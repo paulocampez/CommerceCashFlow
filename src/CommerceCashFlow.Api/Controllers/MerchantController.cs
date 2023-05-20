@@ -18,7 +18,7 @@ namespace CommerceCashFlow.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetMerchant(int id)
+        public async Task<IActionResult> GetMerchant(Guid id)
         {
             var query = new GetMerchantQuery(id);
             var result = await _mediator.Send(query);
@@ -37,7 +37,7 @@ namespace CommerceCashFlow.Api.Controllers
 
             var result = await _mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetMerchant), new { id = result.Id }, result);
+            return CreatedAtAction(nameof(GetMerchant), new { id = result }, result);
         }
     }
 }

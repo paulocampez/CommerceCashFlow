@@ -3,9 +3,12 @@ using CommerceCashFlow.Application.Models;
 
 namespace CommerceCashFlow.Application.Queries
 {
-    public class GetMerchantQuery : IRequest<MerchantDto>
+    public class GetMerchantQuery : IRequest<MerchantViewModel>
     {
-        public int MerchantId { get; set; }
-
+        public Guid MerchantId { get; set; }
+        public GetMerchantQuery(Guid id)
+        {
+            MerchantId = id;
+        }
     }
 }

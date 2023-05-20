@@ -1,3 +1,4 @@
+using MediatR;
 namespace CommerceCashFlow.Application.Commands;
 public class CreateMerchantCommand : IRequest<int>
 {

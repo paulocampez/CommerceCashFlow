@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace CommerceCashFlow.Core.Services;
     public interface IMerchantService
     {
-        IEnumerable<Merchant> GetAllMerchants();
-        Merchant GetMerchantById(int id);
-        Merchant CreateMerchant(Merchant merchant);
-        Merchant UpdateMerchant(Merchant merchant);
-        bool DeleteMerchant(int id);
+        Task<IEnumerable<Merchant>> GetAllMerchants();
+        Task<Merchant> GetMerchantById(Guid id);
+        Task CreateMerchant(Merchant merchant);
+        Task UpdateMerchant(Merchant merchant);
+        Task DeleteMerchant(Guid id);
     }
