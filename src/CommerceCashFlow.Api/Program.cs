@@ -1,5 +1,7 @@
+using CommerceCashFlow.Application;
 using CommerceCashFlow.Application.CommandHandlers;
 using CommerceCashFlow.Application.Commands;
+using CommerceCashFlow.Application.Models;
 using CommerceCashFlow.Application.Queries;
 using CommerceCashFlow.Core.Repositories;
 using CommerceCashFlow.Core.Services;
@@ -7,10 +9,10 @@ using CommerceCashFlow.Infrastructure;
 using CommerceCashFlow.Infrastructure.Data;
 using CommerceCashFlow.Infrastructure.Data.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,13 +32,16 @@ services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssemblyContaining(typeof(Program));
 });
-
+services.AddAutoMapper(typeof(Program), typeof(MappingProfile));
 
 // Register repositories and services
- services.AddScoped<IMerchantRepository, MerchantRepository>();
+services.AddScoped<IMerchantRepository, MerchantRepository>();
  services.AddScoped<IMerchantService, MerchantService>();
 //Add service CreateMerchantCommand registration
 services.AddScoped<IRequestHandler<CreateMerchantCommand, string>, CreateMerchantCommandHandler>();
+services.AddScoped<IRequestHandler<GetMerchantQuery, MerchantViewModel>, GetMerchantQueryHandler>();
+
+//TODO: Create a new class for all the DI
 //Add Swagger
 var app = builder.Build();
 
