@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C5C7443-067E-4F8D-9E78-CC8B338FEFBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommerceCashFlow.Api", "src\CommerceCashFlow.Api\CommerceCashFlow.Api.csproj", "{3DFBA8A1-B4D3-4BB2-930A-8A0072A1E2CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommerceCashFlow.Application", "src\CommerceCashFlow.Application\CommerceCashFlow.Application.csproj", "{EFA078A7-1C6D-4306-9401-40ACCD39E64F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommerceCashFlow.Domain", "src\CommerceCashFlow.Domain\CommerceCashFlow.Domain.csproj", "{47D150DD-0D2C-4700-A1D1-377C63EE8101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommerceCashFlow.Infrastructure", "src\CommerceCashFlow.Infrastructure\CommerceCashFlow.Infrastructure.csproj", "{42C280E7-C303-4941-AA9F-0476F1AD34EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommerceCashFlow.Tests", "src\CommerceCashFlow.Tests\CommerceCashFlow.Tests.csproj", "{87E85764-3EAE-4344-BE1E-73A69BE99B5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DFBA8A1-B4D3-4BB2-930A-8A0072A1E2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DFBA8A1-B4D3-4BB2-930A-8A0072A1E2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DFBA8A1-B4D3-4BB2-930A-8A0072A1E2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DFBA8A1-B4D3-4BB2-930A-8A0072A1E2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA078A7-1C6D-4306-9401-40ACCD39E64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA078A7-1C6D-4306-9401-40ACCD39E64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA078A7-1C6D-4306-9401-40ACCD39E64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA078A7-1C6D-4306-9401-40ACCD39E64F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D150DD-0D2C-4700-A1D1-377C63EE8101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D150DD-0D2C-4700-A1D1-377C63EE8101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D150DD-0D2C-4700-A1D1-377C63EE8101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D150DD-0D2C-4700-A1D1-377C63EE8101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42C280E7-C303-4941-AA9F-0476F1AD34EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C280E7-C303-4941-AA9F-0476F1AD34EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C280E7-C303-4941-AA9F-0476F1AD34EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C280E7-C303-4941-AA9F-0476F1AD34EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E85764-3EAE-4344-BE1E-73A69BE99B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E85764-3EAE-4344-BE1E-73A69BE99B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E85764-3EAE-4344-BE1E-73A69BE99B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E85764-3EAE-4344-BE1E-73A69BE99B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DFBA8A1-B4D3-4BB2-930A-8A0072A1E2CF} = {9C5C7443-067E-4F8D-9E78-CC8B338FEFBD}
+		{EFA078A7-1C6D-4306-9401-40ACCD39E64F} = {9C5C7443-067E-4F8D-9E78-CC8B338FEFBD}
+		{47D150DD-0D2C-4700-A1D1-377C63EE8101} = {9C5C7443-067E-4F8D-9E78-CC8B338FEFBD}
+		{42C280E7-C303-4941-AA9F-0476F1AD34EC} = {9C5C7443-067E-4F8D-9E78-CC8B338FEFBD}
+		{87E85764-3EAE-4344-BE1E-73A69BE99B5B} = {9C5C7443-067E-4F8D-9E78-CC8B338FEFBD}
+	EndGlobalSection
+EndGlobal
