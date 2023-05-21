@@ -4,7 +4,10 @@ using CommerceCashFlow.Application.Commands;
 using CommerceCashFlow.Application.Models;
 using CommerceCashFlow.Application.Queries;
 using CommerceCashFlow.Core.Repositories;
+using CommerceCashFlow.Core.Repositories.Caching;
+using CommerceCashFlow.Core.Repositories.Interfaces;
 using CommerceCashFlow.Core.Services;
+using CommerceCashFlow.Core.Services.Interfaces;
 using CommerceCashFlow.Infrastructure;
 using CommerceCashFlow.Infrastructure.Data;
 using CommerceCashFlow.Infrastructure.Data.Repositories;
@@ -37,9 +40,18 @@ services.AddAutoMapper(typeof(Program), typeof(MappingProfile));
 // Register repositories and services
 services.AddScoped<IMerchantRepository, MerchantRepository>();
  services.AddScoped<IMerchantService, MerchantService>();
+
+services.AddScoped<ITransactionRepository, TransactionRepository>();
+services.AddScoped<ITransactionService, TransactionService>();
+
+services.AddScoped<IReportRepository, ReportRepository>();
+services.AddScoped<IReportService, ReportService>();
+services.AddScoped<IReportCache, ReportCache>();
 //Add service CreateMerchantCommand registration
 services.AddScoped<IRequestHandler<CreateMerchantCommand, string>, CreateMerchantCommandHandler>();
 services.AddScoped<IRequestHandler<GetMerchantQuery, MerchantViewModel>, GetMerchantQueryHandler>();
+services.AddScoped<IRequestHandler<CreateTransactionCommand, int>, CreateTransactionCommandHandler>();
+services.AddScoped<IRequestHandler<GetReportQuery, ReportViewModel>, GetReportQueryHandler>();
 
 //TODO: Create a new class for all the DI
 //Add Swagger

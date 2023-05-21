@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CommerceCashFlow.Application.Commands;
 using CommerceCashFlow.Application.Models;
 using CommerceCashFlow.Core.Entities;
 using System;
@@ -14,6 +15,9 @@ namespace CommerceCashFlow.Application
         public MappingProfile()
         {
             CreateMap<Merchant, MerchantViewModel>();
+            CreateMap<Transaction, CreateTransactionCommand>();
+            CreateMap<Report, ReportViewModel>();
+            CreateMap<CreateTransactionCommand, Transaction>();
         }
     }
 }

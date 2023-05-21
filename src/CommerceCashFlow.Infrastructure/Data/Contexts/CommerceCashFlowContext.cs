@@ -10,9 +10,9 @@ namespace CommerceCashFlow.Infrastructure.Data
         }
 
         public DbSet<Merchant> Merchants { get; set; }
-        //public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         // public DbSet<TransactionCategory> TransactionCategories { get; set; }
-        // public DbSet<Report> Reports { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
