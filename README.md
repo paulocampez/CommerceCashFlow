@@ -3,6 +3,12 @@
 A solução CommerceCashFlow foi projetada para fornecer uma plataforma para os comerciantes gerenciarem seu fluxo de caixa diário por meio de entradas de débito e crédito. Também inclui recursos para geração de relatórios consolidados de balanço diário.
 Este projeto foi criado como teste com prazo de entrega de ate 3 dias.
 
+## TODO:
+- Front end
+- Refatorar o código
+- Implementar testes unitários
+- Implementar testes de integração
+
 ## Arquitetura da Solucao Implementada
 
 A solução segue uma arquitetura em camadas, aderindo aos princípios SOLID e padrão CQRS. É composto pelas seguintes camadas:
