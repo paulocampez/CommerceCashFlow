@@ -3,15 +3,15 @@ services:
   commercecashflow.api:
     build:
       context: .
-      dockerfile: src/CommerceCashFlow.Api/Dockerfile
+      dockerfile: src/Dockerfile
     ports:
       - 5000:80
     depends_on:
-      - commercecashflow.db
-      - commercecashflow.redis
-    volumes:
-      - ./src/CommerceCashFlow.Api:/app
-  
+      # - commercecashflow.redis
+      commercecashflow.db:
+        condition: service_healthy
+    command: ["dotnet", "ef", "database update"]
+
   commercecashflow.db:
     image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
@@ -21,6 +21,12 @@ services:
       - 1433:1433
     volumes:
       - dbdata:/var/opt/mssql
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
 
   commercecashflow.redis:
     image: redis:latest

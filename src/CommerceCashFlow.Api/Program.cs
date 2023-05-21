@@ -26,6 +26,7 @@ string RedisConnectionString = builder.Configuration.GetSection("RedisCache")["C
 builder.Services.AddDbContext<CommerceCashFlowContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 builder.Services.AddControllers();
 //Add Swagger
 builder.Services.AddSwaggerGen(c =>
@@ -66,6 +67,14 @@ services.AddScoped<IRequestHandler<GetReportQuery, ReportViewModel>, GetReportQu
 //TODO: Create a new class for all the DI
 //Add Swagger
 var app = builder.Build();
+
+// using (var scope = app.Services.CreateScope())
+// {
+//     var serviceProvider = scope.ServiceProvider;
+
+//     var context = serviceProvider.GetRequiredService<CommerceCashFlowContext>();
+//     context.Database.Migrate();
+// }
 
 app.UseSwagger();
 //Add Swagger
