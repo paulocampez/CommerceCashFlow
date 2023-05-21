@@ -11,7 +11,7 @@ A solução segue uma arquitetura em camadas, aderindo aos princípios SOLID e p
 
 - **Camada de Aplicação**: Implementa a lógica de negócios e orquestra as interações entre as camadas de apresentação e domínio. Ele inclui manipuladores de comando e consulta para lidar com solicitações e processar operações de negócios.
 
-- **Camada de domínio**: contém as principais entidades de negócios e a lógica de domínio. Ele define entidades como `Merchant`, `Transaction` e `TransactionCategory`.
+- **Camada de domínio**: contém as principais entidades de negócios e a lógica de domínio. Ele define entidades como `Merchant`, `Transaction` e `Report`.
 
 - **Camada de infraestrutura**: fornece implementações para dependências externas, como acesso a dados, armazenamento em cache e manipulação de eventos. Inclui repositórios para persistência de dados e serviços para gerenciamento de cache.
 
