@@ -26,6 +26,19 @@ string RedisConnectionString = builder.Configuration.GetSection("RedisCache")["C
 builder.Services.AddDbContext<CommerceCashFlowContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyAllowSpecificOrigins",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:3000",
+                                              "https://localhost:3000").SetIsOriginAllowedToAllowWildcardSubdomains()
+                                              .AllowAnyHeader()
+                                              .AllowCredentials()
+                                              .WithMethods("GET", "PUT", "POST", "DELETE", "OPTIONS")
+                                              .SetPreflightMaxAge(TimeSpan.FromSeconds(3600));
+                      });
+});
 
 builder.Services.AddControllers();
 //Add Swagger
@@ -67,7 +80,15 @@ services.AddScoped<IRequestHandler<GetReportQuery, ReportViewModel>, GetReportQu
 //TODO: Create a new class for all the DI
 //Add Swagger
 var app = builder.Build();
+app.UseCors(x =>
+{
+    x.WithOrigins("http://localhost:3000", "https://localhost:3000").SetIsOriginAllowedToAllowWildcardSubdomains()
+                                                  .AllowAnyHeader()
+                                                  .AllowCredentials()
+                                                  .WithMethods("GET", "PUT", "POST", "DELETE", "OPTIONS")
+                                                  .SetPreflightMaxAge(TimeSpan.FromSeconds(3600));
 
+});
 // using (var scope = app.Services.CreateScope())
 // {
 //     var serviceProvider = scope.ServiceProvider;
