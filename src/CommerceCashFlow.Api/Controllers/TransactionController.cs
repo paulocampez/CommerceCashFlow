@@ -19,7 +19,7 @@ namespace CommerceCashFlow.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> CreateTransaction(CreateTransactionCommand command)
+        public async Task<ActionResult<int>> CreateTransaction([FromBody] CreateTransactionCommand command)
         {
             var transactionId = await _mediator.Send(command);
             return transactionId;
