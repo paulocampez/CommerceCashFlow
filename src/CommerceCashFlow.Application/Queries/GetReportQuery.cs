@@ -5,10 +5,16 @@ namespace CommerceCashFlow.Application.Queries
 {
     public class GetReportQuery : IRequest<ReportViewModel>
     {
-        public string ReportId { get; set; }
-        public GetReportQuery(string id)
+        public Guid MerchantId { get; set; }
+        public int Day { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
+        public GetReportQuery(Guid merchantId, int day, int month, int year)
         {
-            ReportId = id;
+            MerchantId = merchantId;
+            Day = day;
+            Month = month;
+            Year = year;
         }
     }
 }

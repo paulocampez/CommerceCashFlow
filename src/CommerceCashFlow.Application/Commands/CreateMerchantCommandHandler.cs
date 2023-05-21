@@ -4,7 +4,7 @@ using CommerceCashFlow.Core.Repositories;
 using MediatR;
 
 namespace CommerceCashFlow.Application.CommandHandlers;
-public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantCommand, string>
+public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantCommand, Guid>
 {
     private readonly IMerchantRepository _merchantRepository;
 
@@ -13,7 +13,7 @@ public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantComman
         _merchantRepository = merchantRepository;
     }
 
-    public async Task<string> Handle(CreateMerchantCommand request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateMerchantCommand request, CancellationToken cancellationToken)
     {
         var merchant = new Merchant
         {
@@ -23,6 +23,6 @@ public class CreateMerchantCommandHandler : IRequestHandler<CreateMerchantComman
 
         await _merchantRepository.AddMerchant(merchant);
 
-        return merchant.Name;
+        return merchant.Id;
     }
 }

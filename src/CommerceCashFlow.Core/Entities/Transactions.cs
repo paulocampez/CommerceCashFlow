@@ -7,6 +7,7 @@ public class Transaction
     public double Amount { get; set; }
     public Guid MerchantId { get; set; }
     public TransactionCategory TransactionCategory { get; set; }
+    public DateTime Date { get; set; }
     public Merchant Merchant { get; set; }
 }
 

@@ -17,10 +17,10 @@ namespace CommerceCashFlow.Api.Controllers
             _mediator = mediator;
     }
 
-    [HttpGet("{reportId}")]
-    public async Task<ActionResult<Report>> GetReport(string reportId)
+    [HttpGet]
+    public async Task<ActionResult<Report>> GetReport(Guid merchantId, int day, int month, int year)
     {
-        var query = new GetReportQuery(reportId);
+        var query = new GetReportQuery(merchantId, day,month,year);
         var report = await _mediator.Send(query);
         if (report == null)
         {

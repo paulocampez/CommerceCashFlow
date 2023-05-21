@@ -1,5 +1,10 @@
-     namespace CommerceCashFlow.Application.Models;
-     public class ReportViewModel
+namespace CommerceCashFlow.Application.Models;
+public class ReportViewModel
 {
-        public int Id { get; set; }
-    }
+    public Guid MerchantId { get; set; }
+    public DateTime Date { get; set; }
+    public double OpeningBalance { get; set; }
+    public double TotalCredit { get; set; }
+    public double TotalDebit { get; set; }
+    public double ClosingBalance { get; set; }
+}

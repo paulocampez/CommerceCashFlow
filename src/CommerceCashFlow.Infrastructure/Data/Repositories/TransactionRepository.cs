@@ -20,6 +20,7 @@ namespace CommerceCashFlow.Infrastructure.Data.Repositories
 
         public async Task<int> CreateAsync(Transaction transaction)
         {
+            transaction.Date = DateTime.Now;
             _context.Transactions.Add(transaction);
             await _context.SaveChangesAsync();
             return transaction.Id;

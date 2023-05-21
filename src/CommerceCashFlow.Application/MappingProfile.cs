@@ -17,6 +17,7 @@ namespace CommerceCashFlow.Application
             CreateMap<Merchant, MerchantViewModel>();
             CreateMap<Transaction, CreateTransactionCommand>();
             CreateMap<Report, ReportViewModel>();
+            CreateMap<Transaction, TransactionsViewModel>();
             CreateMap<CreateTransactionCommand, Transaction>();
         }
     }

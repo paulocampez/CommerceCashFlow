@@ -4,6 +4,7 @@ using CommerceCashFlow.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommerceCashFlow.Infrastructure.Migrations
 {
     [DbContext(typeof(CommerceCashFlowContext))]
-    partial class CommerceCashFlowContextModelSnapshot : ModelSnapshot
+    [Migration("20230521004211_adddatetimetransaction")]
+    partial class adddatetimetransaction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,27 +52,30 @@ namespace CommerceCashFlow.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("ClosingBalance")
-                        .HasColumnType("float");
+                    b.Property<decimal>("ClosingBalance")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MerchantId")
+                    b.Property<int>("MerchantId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("MerchantId1")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<double>("OpeningBalance")
-                        .HasColumnType("float");
+                    b.Property<decimal>("OpeningBalance")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<double>("TotalCredit")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TotalCredit")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<double>("TotalDebit")
-                        .HasColumnType("float");
+                    b.Property<decimal>("TotalDebit")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MerchantId");
+                    b.HasIndex("MerchantId1");
 
                     b.ToTable("Reports");
                 });
@@ -105,7 +111,7 @@ namespace CommerceCashFlow.Infrastructure.Migrations
                 {
                     b.HasOne("CommerceCashFlow.Core.Entities.Merchant", "Merchant")
                         .WithMany()
-                        .HasForeignKey("MerchantId")
+                        .HasForeignKey("MerchantId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

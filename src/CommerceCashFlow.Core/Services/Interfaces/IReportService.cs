@@ -9,6 +9,6 @@ namespace CommerceCashFlow.Core.Services.Interfaces
 {
     public interface IReportService
     {
-        Task<Report> GetReportAsync(string reportId);
+        Task<Report> GetReportAsync(Guid merchantId, int day, int month, int year);
     }
 }

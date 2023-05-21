@@ -1,6 +1,6 @@
 using MediatR;
 namespace CommerceCashFlow.Application.Commands;
-public class CreateMerchantCommand : IRequest<string>
+public class CreateMerchantCommand : IRequest<Guid>
 {
     public string Name { get; set; }
     public string Address { get; set; }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MediatR;
 using CommerceCashFlow.Application.Commands;
 using CommerceCashFlow.Application.Queries;
+using CommerceCashFlow.Application.Models;
 
 namespace CommerceCashFlow.Api.Controllers
 {
@@ -22,6 +23,13 @@ namespace CommerceCashFlow.Api.Controllers
         {
             var transactionId = await _mediator.Send(command);
             return transactionId;
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<TransactionsViewModel>>> GetTransactions(Guid merchandId)
+        {
+            var query = new GetTransactionsQuery(merchandId);
+            var transactionList = await _mediator.Send(query);
+            return transactionList;
         }
     }
 }

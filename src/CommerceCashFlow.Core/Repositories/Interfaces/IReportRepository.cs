@@ -10,5 +10,7 @@ namespace CommerceCashFlow.Core.Repositories.Interfaces
     public interface IReportRepository
     {
         Task<Report> GetReportAsync(string reportId);
+        Task<Report> GetReportByMerchantIdAndDateAsync(Guid merchantId, DateTime date);
+        Task<Report> CreateAsync(Report report);
     }
 }
